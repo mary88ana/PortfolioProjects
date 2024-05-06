@@ -68,13 +68,13 @@ WHERE continent is not NULL
 GROUP BY continent
 ORDER BY TotalDeathCount DESC
 
---Global Numbers BY Location
+--Global Numbers BY Location and date
 
-SELECT   location, SUM(CAST(new_cases as float))as total_cases,
+SELECT   location,date, SUM(CAST(new_cases as float))as total_cases,
 SUM(CAST(new_deaths as float)) as total_deaths, SUM(CAST(new_deaths as float))/NULLIF(SUM(CAST(new_cases as float)),0)*100 as Percentage
 FROM PortfolioProject1..CovidDeaths
 WHERE continent is not null
-GROUP BY location
+GROUP BY location,date
 ORDER by 1,2
 
 --Total cases worldwide
